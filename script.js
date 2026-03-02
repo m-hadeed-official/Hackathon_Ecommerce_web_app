@@ -5,8 +5,31 @@ import { addCartProducts } from "./modules/cart.js";
 import { addWishListProducts } from "./modules/wishlist.js";
 
 // urls
-let productsUrl = "http://localhost:3000/products";
-let categoryUrl = "http://localhost:3000/categories";
+let productsUrl =
+  "https://api.mockfly.dev/mocks/28c7e519-c845-4e77-a466-396485649116/products";
+let categoryUrl =
+  "https://api.mockfly.dev/mocks/28c7e519-c845-4e77-a466-396485649116/categories";
+
+let userNameDisplay = document.getElementById("userNameDisplay");
+
+let users = JSON.parse(localStorage.getItem("users"));
+let [currentUser] = users.filter((user) => user.isLoggedIn == true);
+
+if (currentUser) {
+  console.log(currentUser);
+
+  userNameDisplay.innerText = currentUser.userName;
+}
+
+window.logOut = () => {
+  users.forEach((element) => {
+    if (element.id == currentUser.id) {
+      element.isLoggedIn = false;
+      localStorage.setItem("users", JSON.stringify(users));
+      window.location.reload();
+    }
+  });
+};
 
 // cart products
 let cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];

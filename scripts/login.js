@@ -23,9 +23,9 @@ loginForm.addEventListener("submit", (e) => {
       element.email == data.email &&
       element.password != data.password
     ) {
-      console.log("Incorrect Password");
+      alert("wrong Password");
     } else {
-      console.log("User Does not Exist");
+      console.log("user does not exist");
     }
   });
 });

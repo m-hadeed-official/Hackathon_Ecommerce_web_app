@@ -89,17 +89,19 @@ export async function fetchAndAddProducts(
     let response = await fetch(url);
     let data = await response.json();
     container.innerHTML = ``;
+    console.log(data.products);
+
     if (!filterId && !searchKeywords) {
-      data.forEach((element) => {
+      data.products.forEach((element) => {
         createCard(element, container);
       });
     } else if (filterId > 0) {
-      let filteredData = data.filter(
+      let filteredData = data.products.filter(
         (element) => element.categoryId == filterId,
       );
       filteredData.forEach((element) => createCard(element, container));
     } else if (searchKeywords) {
-      let filteredData = data.filter((element) =>
+      let filteredData = data.products.filter((element) =>
         element.heading.toLowerCase().includes(searchKeywords.toLowerCase()),
       );
       console.log(filteredData);

@@ -11,7 +11,7 @@ export async function fetchAndAddCategories(url, container) {
   try {
     let response = await fetch(url);
     let data = await response.json();
-    data.forEach((element) => {
+    data.categories.forEach((element) => {
       addCategory(element, container);
     });
   } catch {

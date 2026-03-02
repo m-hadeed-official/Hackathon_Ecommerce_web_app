@@ -13,9 +13,11 @@ registerForm.addEventListener("submit", (e) => {
   let data = Object.fromEntries(formData.entries());
 
   let user = {
+    id: users.length,
     userName: data.userName,
     email: data.email,
     password: data.password,
+    cartProducts: [],
   };
 
   //   confirm user
@@ -34,7 +36,9 @@ registerForm.addEventListener("submit", (e) => {
 
     //   clear form
     e.target.reset();
+
+    alert("registered Successfully");
   } else {
-    console.log("email exists");
+    alert("email exists");
   }
 });
