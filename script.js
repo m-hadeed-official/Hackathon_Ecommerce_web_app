@@ -218,7 +218,7 @@ let category = [
 
 let userNameDisplay = document.getElementById("userNameDisplay");
 
-let users = JSON.parse(localStorage.getItem("users"));
+let users = JSON.parse(localStorage.getItem("users")) || [];
 let [currentUser] = users.filter((user) => user.isLoggedIn == true);
 
 if (currentUser) {
