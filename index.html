@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | E-commerce_sebsite</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <link rel="stylesheet" type="text/tailwindcss" href="style.css" />
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .scrollbar-none {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+
+      .scrollbar-none::-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
+      }
+    }
+  </style>
+
+  <script src="script.js" async type="module"></script>
+
+  <!-- cart -->
+  <section
+    class="w-full h-full fixed bg-[#e7e7e77e] flex justify-center items-center hidden z-10"
+    id="cartWrapper"
+  >
+    <div
+      class="bg-amber-500 h-[80vh] max-w-xl w-[95%] rounded-xl py-3 px-4 flex flex-col gap-2"
+      id=""
+    >
+      <div class="w-full flex-2 h-[75%]">
+        <div class="flex justify-between px-2">
+          <h3 class="text-xl font-bold mb-3">Items</h3>
+          <div class="hover:text-white" onclick="hideCart()">
+            <i class="fa-solid fa-x"></i>
+          </div>
+        </div>
+        <div
+          class="overflow-y-scroll no-scrollbar flex flex-col gap-2 h-[90%] bg-amber-200 px-2.5 rounded-xl py-2"
+          id="cartCardContainer"
+        ></div>
+      </div>
+      <div class="flex-1 flex justify-between items-center">
+        <div class="flex flex-col gap-4">
+          <h3 class="text-2xl font-bold">Summary</h3>
+
+          <h4 class="font-semibold text-xl" id="cartTotalContainer">Total :</h4>
+        </div>
+        <button
+          class="px-4 py-3 bg-amber-800 rounded-xl text-white hover:bg-amber-400"
+        >
+          Order Now
+        </button>
+      </div>
+    </div>
+  </section>
+  <!-- cart end -->
+
+  <body>
+    <!-- header -->
+    <header class="px-5 py-3.5 bg-emerald-200 relative">
+      <div class="flex justify-between items-center w-[95%] md:w-[85% ] m-auto">
+        <div>Ecommerce_logo</div>
+        <div class="text-xl sm:hidden" id="headerMenuIcon">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <div class="sm:block sm:flex sm:gap-5 hidden" id="navMenuContainer">
+          <div class="relative">
+            <button onclick="revealWishList()">
+              <i class="fa-solid text-xl fa-heart hover:text-emerald-800"></i>
+              <div
+                id="wishListCounter"
+                class="absolute -top-1 -right-1 rounded-full bg-[#fcba0394] w-5 h-5 flex justify-center p-1 items-center text-[2px] font-bold text-white"
+              >
+                0
+              </div>
+            </button>
+          </div>
+          <div>
+            <button onclick="revealCart()" class="relative">
+              <i
+                class="fa-solid text-xl fa-cart-shopping hover:text-emerald-800"
+              ></i>
+              <div
+                id="cartCounter"
+                class="absolute -top-1 -right-1 rounded-full bg-[#fcba0394] w-5 h-5 flex justify-center p-1 items-center text-[2px] font-bold text-white"
+              >
+                0
+              </div>
+            </button>
+          </div>
+          <div>
+            <button onclick="changeMode()">
+              <i class="fa-solid text-xl fa-moon hover:text-emerald-800"></i>
+            </button>
+          </div>
+          <a href="pages/login.html">Login</a>
+          <a href="pages/signup.html">signup</a>
+        </div>
+      </div>
+    </header>
+    <body>
+      <section id="hero" class="h-[80vh]">
+        <div class="w-85% h-full m-auto bg-amber-100 relative px-5 py-3">
+          <img class="h-full w-full" src="img/product.jpg" alt="" />
+          <button
+            class="absolute p-3 text-center top-[calc(100%*1/2)] bg-amber-950 hover:bg-amber-700 font-bold text-4xl text-white left-0"
+          >
+            &lt;
+          </button>
+          <button
+            class="absolute p-3 text-center top-[calc(100%*1/2)] bg-amber-950 hover:bg-amber-700 font-bold text-4xl text-white right-0"
+          >
+            &gt;
+          </button>
+        </div>
+      </section>
+
+      <section id="products" class="py-10 bg-sky-200">
+        <div class="flex flex-col gap-2">
+          <div class="flex justify-between px-5">
+            <h1
+              class="text-3xl md:text-4xl font-bold lg:text-head-lg"
+              id="productsHeading"
+            >
+              Products
+            </h1>
+            <div class="relative">
+              <input
+                id="searchBar"
+                class="py-2 px-4 pl-10 bg-[#ebf2ef] w-40 sm:w-[%] md:w-sm rounded-3xl"
+                placeholder="Search Here.."
+                type="text"
+              />
+              <i
+                class="fas fa-search absolute left-3 top-3 text-gray-600 text-md"
+              ></i>
+            </div>
+          </div>
+          <section
+            class="w-[95%] md:w-[85% ] m-auto py-2 px-3 flex gap-2 overflow-x-scroll scrollbar-none"
+            id="categoryContainer"
+          ></section>
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-3 px-5 max-w-fit m-auto"
+            id="cardsContainer"
+          ></div>
+          <div id="pagination" class="flex gap-2 justify-center mt-8"></div>
+        </div>
+      </section>
+    </body>
+  </body>
+</html>

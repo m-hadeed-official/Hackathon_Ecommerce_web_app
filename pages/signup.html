@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignUp | E-Commerce</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script async src="../scripts/register.js"></script>
+  </head>
+  <body>
+    <div class="flex items-center px-3 h-[100vh]" id="mainContainer">
+      <section
+        class="bg-amber-200 py-5 px-7 rounded-xl border-[2px] border-grey-600 m-auto flex flex-col items-center gap-5"
+        id="loginSection"
+      >
+        <h1 class="text-4xl text-center font-bold">Create an Account.</h1>
+        <div class="flex flex-col gap-8 w-full max-w-80">
+          <h2 class="text-2xl font-semibold">Register:</h2>
+          <form id="registerForm" class="flex flex-col gap-5" action="">
+            <input
+              class="py-2 px-3 text-md bg-grey-200 border-[2px] border-grey-300 rounded-xl"
+              type="text"
+              placeholder="Enter your Name"
+              name="userName"
+              required
+            />
+            <input
+              class="py-2 px-3 text-md bg-grey-200 border-[2px] border-grey-300 rounded-xl"
+              type="text"
+              placeholder="Enter your Email"
+              name="email"
+              required
+            />
+            <input
+              class="py-2 px-3 text-md bg-grey-200 border-[2px] border-grey-300 rounded-xl"
+              type="password"
+              placeholder="Create Password"
+              name="password"
+              required
+            />
+            <input
+              class="py-2 px-3 mt-5 text-md bg-amber-500 rounded-xl"
+              type="submit"
+              value="Register"
+            />
+          </form>
+          <div class="flex flex-col gap-3 w-full max-w-80">
+            <span class="text-red-800">Already have an Account!</span>
+            <a
+              class="py-2 px-3 text-md text-center bg-green-500 rounded-xl"
+              href="login.html"
+            >
+              login
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Register section -->
+    </div>
+  </body>
+</html>

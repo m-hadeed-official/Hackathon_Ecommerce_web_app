@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme extend {
+  /* breakpoints */
+  --breakpoint-sm: 425px;
+}
+/* body {
+  color: #fcba0370;
+} */
