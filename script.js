@@ -220,6 +220,7 @@ let userNameDisplay = document.getElementById("userNameDisplay");
 
 let users = JSON.parse(localStorage.getItem("users")) || [];
 let [currentUser] = users.filter((user) => user.isLoggedIn == true);
+//this
 
 if (currentUser) {
   console.log(currentUser);
