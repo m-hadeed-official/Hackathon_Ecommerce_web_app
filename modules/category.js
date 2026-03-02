@@ -7,14 +7,10 @@ export function addCategory(obj, target) {
         </button>`;
 }
 
-export async function fetchAndAddCategories(url, container) {
-  try {
-    let response = await fetch(url);
-    let data = await response.json();
-    data.categories.forEach((element) => {
-      addCategory(element, container);
-    });
-  } catch {
-    container.innerHTML = `<span class= "italic text-red-800">Error Fetching Categories</span>`;
-  }
+export function fetchAndAddCategories(data, container) {
+  container.innerHTML = "";
+
+  data.forEach((element) => {
+    addCategory(element, container);
+  });
 }

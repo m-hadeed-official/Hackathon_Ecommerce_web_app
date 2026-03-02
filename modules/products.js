@@ -79,36 +79,27 @@ export function createCard(obj, target) {
   target.appendChild(card);
 }
 
-export async function fetchAndAddProducts(
-  url,
+export function fetchAndAddProducts(
+  data,
   container,
+
   filterId = 0,
   searchKeywords = "",
 ) {
-  try {
-    let response = await fetch(url);
-    let data = await response.json();
-    container.innerHTML = ``;
-    console.log(data.products);
+  container.innerHTML = "";
+  if (!filterId && !searchKeywords) {
+    data.forEach((element) => {
+      createCard(element, container);
+    });
+  } else if (filterId > 0) {
+    let filteredData = data.filter((element) => element.categoryId == filterId);
+    filteredData.forEach((element) => createCard(element, container));
+  } else if (searchKeywords) {
+    let filteredData = data.filter((element) =>
+      element.heading.toLowerCase().includes(searchKeywords.toLowerCase()),
+    );
+    console.log(filteredData);
 
-    if (!filterId && !searchKeywords) {
-      data.products.forEach((element) => {
-        createCard(element, container);
-      });
-    } else if (filterId > 0) {
-      let filteredData = data.products.filter(
-        (element) => element.categoryId == filterId,
-      );
-      filteredData.forEach((element) => createCard(element, container));
-    } else if (searchKeywords) {
-      let filteredData = data.products.filter((element) =>
-        element.heading.toLowerCase().includes(searchKeywords.toLowerCase()),
-      );
-      console.log(filteredData);
-
-      filteredData.forEach((element) => createCard(element, container));
-    }
-  } catch {
-    container.innerHTML = `<span class= "italic text-red-800">Error Fetching products</span>`;
+    filteredData.forEach((element) => createCard(element, container));
   }
 }

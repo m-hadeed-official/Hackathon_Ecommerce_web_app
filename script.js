@@ -5,10 +5,216 @@ import { addCartProducts } from "./modules/cart.js";
 import { addWishListProducts } from "./modules/wishlist.js";
 
 // urls
-let productsUrl =
-  "https://api.mockfly.dev/mocks/28c7e519-c845-4e77-a466-396485649116/products";
-let categoryUrl =
-  "https://api.mockfly.dev/mocks/28c7e519-c845-4e77-a466-396485649116/categories";
+let products = [
+  {
+    id: 1,
+    heading: "Wireless Headphones",
+    description: "High-quality wireless headphones with noise cancellation.",
+    price: 89.99,
+    quantity: 1,
+    img: "https://picsum.photos/seed/p1/400/300",
+    categoryId: 1,
+    rating: 4.6,
+  },
+  {
+    id: 2,
+    heading: "Smart Watch",
+    description: "Track your fitness and notifications with this smart watch.",
+    price: 129.99,
+    quantity: 1,
+    img: "https://picsum.photos/seed/p2/400/300",
+    categoryId: 1,
+    rating: 4.4,
+  },
+  {
+    id: 3,
+    heading: "Bluetooth Speaker",
+    description: "Portable speaker with deep bass and clear sound.",
+    price: 49.99,
+    quantity: 1,
+    img: "https://picsum.photos/seed/p3/400/300",
+    categoryId: 1,
+    rating: 4.3,
+  },
+  {
+    id: 4,
+    heading: "Men's Casual T-Shirt",
+    description: "Comfortable cotton t-shirt for everyday wear.",
+    price: 19.99,
+    quantity: 1,
+    img: "https://picsum.photos/seed/p4/400/300",
+    categoryId: 2,
+    rating: 4.1,
+  },
+  {
+    id: 5,
+    heading: "Women's Denim Jacket",
+    description: "Stylish denim jacket for all seasons.",
+    price: 59.99,
+    quantity: 1,
+    img: "https://picsum.photos/seed/p5/400/300",
+    categoryId: 2,
+    rating: 4.7,
+  },
+  {
+    id: 6,
+    heading: "Running Shoes",
+    description: "Lightweight running shoes with breathable material.",
+    price: 79.99,
+    quantity: 1,
+    img: "https://picsum.photos/seed/p6/400/300",
+    categoryId: 2,
+    rating: 4.5,
+  },
+  {
+    id: 7,
+    heading: "Non-Stick Frying Pan",
+    description: "Durable non-stick pan for easy cooking.",
+    price: 29.99,
+    quantity: 1,
+    img: "https://picsum.photos/seed/p7/400/300",
+    categoryId: 3,
+    rating: 4.2,
+  },
+  {
+    id: 8,
+    heading: "Electric Kettle",
+    description: "Fast boiling electric kettle with auto shut-off.",
+    price: 39.99,
+    quantity: 1,
+    img: "https://picsum.photos/seed/p8/400/300",
+    categoryId: 3,
+    rating: 4.4,
+  },
+  {
+    id: 9,
+    heading: "Blender Machine",
+    description: "Multi-speed blender for smoothies and juices.",
+    price: 69.99,
+    quantity: 1,
+    img: "https://picsum.photos/seed/p9/400/300",
+    categoryId: 3,
+    rating: 4.3,
+  },
+  {
+    id: 10,
+    heading: "Modern JavaScript Guide",
+    description: "Comprehensive guide to modern JavaScript development.",
+    price: 24.99,
+    quantity: 1,
+    img: "https://picsum.photos/seed/p10/400/300",
+    categoryId: 4,
+    rating: 4.8,
+  },
+  {
+    id: 11,
+    heading: "React for Beginners",
+    description: "Learn React step by step with practical examples.",
+    price: 29.99,
+    quantity: 1,
+    img: "https://picsum.photos/seed/p11/400/300",
+    categoryId: 4,
+    rating: 4.6,
+  },
+  {
+    id: 12,
+    heading: "CSS Mastery",
+    description: "Advanced techniques for professional CSS styling.",
+    price: 22.99,
+    quantity: 1,
+    img: "https://picsum.photos/seed/p12/400/300",
+    categoryId: 4,
+    rating: 4.2,
+  },
+  {
+    id: 13,
+    heading: "Yoga Mat",
+    description: "Non-slip yoga mat with comfortable cushioning.",
+    price: 34.99,
+    quantity: 1,
+    img: "https://picsum.photos/seed/p13/400/300",
+    categoryId: 5,
+    rating: 4.5,
+  },
+  {
+    id: 14,
+    heading: "Dumbbell Set",
+    description: "Adjustable dumbbells for strength training.",
+    price: 99.99,
+    quantity: 1,
+    img: "https://picsum.photos/seed/p14/400/300",
+    categoryId: 5,
+    rating: 4.7,
+  },
+  {
+    id: 15,
+    heading: "Skipping Rope",
+    description: "Durable skipping rope for cardio workouts.",
+    price: 14.99,
+    quantity: 1,
+    img: "https://picsum.photos/seed/p15/400/300",
+    categoryId: 5,
+    rating: 4.0,
+  },
+  {
+    id: 16,
+    heading: "Gaming Mouse",
+    description: "High precision gaming mouse with RGB lighting.",
+    price: 45.99,
+    quantity: 1,
+    img: "https://picsum.photos/seed/p16/400/300",
+    categoryId: 1,
+    rating: 4.6,
+  },
+  {
+    id: 17,
+    heading: "Formal Shirt",
+    description: "Slim fit formal shirt for office wear.",
+    price: 39.99,
+    quantity: 1,
+    img: "https://picsum.photos/seed/p17/400/300",
+    categoryId: 2,
+    rating: 4.3,
+  },
+  {
+    id: 18,
+    heading: "Cookware Set",
+    description: "Complete cookware set for modern kitchens.",
+    price: 149.99,
+    quantity: 1,
+    img: "https://picsum.photos/seed/p18/400/300",
+    categoryId: 3,
+    rating: 4.8,
+  },
+  {
+    id: 19,
+    heading: "Data Structures Book",
+    description: "Understand data structures with clear examples.",
+    price: 27.99,
+    quantity: 1,
+    img: "https://picsum.photos/seed/p19/400/300",
+    categoryId: 4,
+    rating: 4.4,
+  },
+  {
+    id: 20,
+    heading: "Resistance Bands",
+    description: "Set of resistance bands for home workouts.",
+    price: 19.99,
+    quantity: 1,
+    img: "https://picsum.photos/seed/p20/400/300",
+    categoryId: 5,
+    rating: 4.2,
+  },
+];
+let category = [
+  { id: 0, name: "All" },
+  { id: 1, name: "Electronics" },
+  { id: 2, name: "Clothing" },
+  { id: 3, name: "Home & Kitchen" },
+  { id: 4, name: "Books" },
+  { id: 5, name: "Fitness" },
+];
 
 let userNameDisplay = document.getElementById("userNameDisplay");
 
@@ -81,15 +287,15 @@ headerMenuIcon.addEventListener("click", () => {
   navMenuContainer.classList.toggle("z-3");
 });
 
-fetchAndAddCategories(categoryUrl, categoryContainer);
-fetchAndAddProducts(productsUrl, cardsContainer);
+fetchAndAddCategories(category, categoryContainer);
+fetchAndAddProducts(products, cardsContainer);
 updateCartCounter(cartProducts);
 updateWishListCounter(wishListProducts);
 
 //filter prducts by category
 function filterProducts(id) {
   console.log("ran");
-  fetchAndAddProducts(productsUrl, cardsContainer, id);
+  fetchAndAddProducts(products, cardsContainer, id);
 
   // update category ui
 }
@@ -103,7 +309,7 @@ window.filterP = function (id) {
 searchBar.addEventListener("input", (e) => {
   console.log(e.target.value);
 
-  fetchAndAddProducts(productsUrl, cardsContainer, 0, e.target.value);
+  fetchAndAddProducts(products, cardsContainer, 0, e.target.value);
 });
 
 //end
